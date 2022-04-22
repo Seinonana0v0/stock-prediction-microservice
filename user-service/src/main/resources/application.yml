@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: userservice
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://81.69.240.39:3306/db_stock?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: seinonanatr
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 81.69.240.39:8858
+        cluster-name: NJ
+
+  rabbitmq:
+    host: 81.69.240.39
+    port: 5672
+    virtual-host: /
+    username: seinonana
+    password: 123456
+
+
+server:
+  port: 8084
+
+feign:
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
