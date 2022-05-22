@@ -19,13 +19,11 @@ public class DataSetServiceImpl implements DataSetService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     public void insertWithOutDataSet(String stockId) {
         dataSetMapper.insertWithOutDataSet(stockId);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     public void insertWithDataSet(String stockId) {
         dataSetMapper.insertWithDataSet(stockId);
     }

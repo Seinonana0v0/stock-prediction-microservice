@@ -1,7 +1,12 @@
 package edu.hhu.taoran.controller;
 
+import edu.hhu.taoran.annotation.LoginToken;
 import edu.hhu.taoran.entity.Result;
 import edu.hhu.taoran.service.DataSetService;
+import edu.hhu.taoran.utils.PythonHttpUtils;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
@@ -96,6 +101,7 @@ public class DataSetController {
     }
 
     @RequestMapping("/insertWithOutDataSet")
+
     public void insertWithOutDataSet(@RequestParam String stockId) {
         dataSetService.insertWithOutDataSet(stockId);
     }
@@ -107,9 +113,16 @@ public class DataSetController {
 
 
 
-    @Scheduled(fixedDelay = 1000*5)
+    @Scheduled(fixedDelay = 1000*60*60*12)
     public void updateDateSets(){
-
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        String url = "http://127.0.0.1:5000/updatedataset";
+        HttpGet httpGet = PythonHttpUtils.PythonHttpCreate(url);
+        try {
+            httpClient.execute(httpGet);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

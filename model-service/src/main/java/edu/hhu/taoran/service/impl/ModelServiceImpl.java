@@ -20,19 +20,26 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     public void insertModel(String stockId) {
         modelMapper.insertModel(stockId);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     public void updateCloseStatus(String stockId) {
         modelMapper.updateCloseStatus(stockId);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
     public void updateOpenStatus(String stockId) {
         modelMapper.updateOpenStatus(stockId);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
+    public void updateDate(String stockId, String date) {
+        modelMapper.updateDate(stockId,date);
     }
 
 

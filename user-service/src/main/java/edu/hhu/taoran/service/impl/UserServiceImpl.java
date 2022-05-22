@@ -33,5 +33,15 @@ public class UserServiceImpl implements UserService {
         return token;
     }
 
+    @Override
+    public User selectById(Integer id) {
+        return userMapper.selectById(id);
+    }
+
+    @Override
+    public User selectByUsername(String username) {
+        return userMapper.selectByUsername(username);
+    }
+
 
 }

@@ -98,7 +98,7 @@ public class StockServiceImpl implements StockService {
 
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = false,rollbackFor = Exception.class)
     public void insertStockWithDataSet(Stock stock) {
         stockMapper.insertStock(stock);
         dataSetClient.insertWithDataSet(stock.getId());
@@ -106,7 +106,7 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,readOnly = false)
+    @Transactional(propagation = Propagation.SUPPORTS,readOnly = false,rollbackFor = Exception.class)
     public void insertStockWithoutDataSet(Stock stock) {
         stockMapper.insertStock(stock);
         dataSetClient.insertWithOutDataSet(stock.getId());
@@ -175,6 +175,11 @@ public class StockServiceImpl implements StockService {
     @Override
     public String selectNameById(String id) {
         return stockMapper.selectNameById(id);
+    }
+
+    @Override
+    public List<String> selectIndustrys() {
+        return stockMapper.selectIndustrys();
     }
 
 

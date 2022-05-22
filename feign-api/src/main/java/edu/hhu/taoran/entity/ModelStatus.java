@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class ModelStatus {
     private Integer openStatus;
     private Integer closeStatus;
+    private String lastDate;
 }

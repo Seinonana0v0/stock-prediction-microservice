@@ -2,6 +2,8 @@ package edu.hhu.taoran.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import edu.hhu.taoran.annotation.LoginToken;
+import edu.hhu.taoran.annotation.PassToken;
 import edu.hhu.taoran.entity.PageResult;
 import edu.hhu.taoran.entity.Result;
 import edu.hhu.taoran.entity.SearchCondition;
@@ -15,12 +17,8 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -158,4 +156,8 @@ public class StockController {
         return stockService.selectNameById(id);
     }
 
+    @RequestMapping("selectIndustrys")
+    public List<String> selectIndustrys(){
+        return stockService.selectIndustrys();
+    }
 }

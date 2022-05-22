@@ -6,6 +6,7 @@ import edu.hhu.taoran.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
@@ -50,4 +51,15 @@ public class UserController {
         session.removeAttribute("user");
         return new Result(true);
     }
+
+    @RequestMapping("/selectById")
+    public User selectById(@RequestParam Integer id){
+        return userService.selectById(id);
+    }
+
+    @RequestMapping("/selectByUsername")
+    public User selectById(@RequestParam String username){
+        return userService.selectByUsername(username);
+    }
+
 }

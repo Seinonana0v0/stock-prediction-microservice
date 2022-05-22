@@ -32,6 +32,6 @@ public interface StockMapper {
     @Insert("insert into t_stock values(#{id},#{name},#{industry},#{introduction})")
     void insertStock(Stock stock);
 
-
-
+    @Select("select industry from t_stock where industry != '' and industry is not null group by industry")
+    List<String> selectIndustrys();
 }

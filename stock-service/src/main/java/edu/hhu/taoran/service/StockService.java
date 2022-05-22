@@ -5,6 +5,7 @@ import edu.hhu.taoran.entity.SearchCondition;
 import edu.hhu.taoran.pojo.Stock;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface  StockService {
     Stock selectById(String id);
@@ -16,6 +17,7 @@ public interface  StockService {
     PageResult ESSearch(SearchCondition searchCondition) throws IOException;
     void insertToEs(String stockId) throws IOException;
     String selectNameById(String id);
+    List<String> selectIndustrys();
 
 
 }

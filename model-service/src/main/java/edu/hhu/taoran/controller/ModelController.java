@@ -1,5 +1,6 @@
 package edu.hhu.taoran.controller;
 
+import edu.hhu.taoran.annotation.LoginToken;
 import edu.hhu.taoran.entity.ModelStatus;
 import edu.hhu.taoran.entity.Result;
 import edu.hhu.taoran.service.ModelService;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 @RequestMapping("/model")
@@ -59,5 +62,17 @@ public class ModelController {
     @RequestMapping("/insertModel")
     public void insertModel(@RequestParam String stockId){
         modelService.insertModel(stockId);
+    }
+
+    @RequestMapping("/updateDate")
+    public Result updateDate(@RequestParam String stockId){
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sf.format(new Date());
+        try {
+            modelService.updateDate(stockId,date);
+            return new Result(true);
+        }catch (Exception e){
+            return new Result(false);
+        }
     }
 }

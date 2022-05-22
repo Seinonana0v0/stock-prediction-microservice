@@ -13,4 +13,11 @@ public interface UserMapper {
 
     @Select("select * from t_user where username=#{username} and password = #{password}")
     User checkLogin(@Param("username") String username, @Param("password") String password);
+
+    @Select("select * from t_user where id = #{id}")
+    User selectById(Integer id);
+
+    @Select("select * from t_user where username = #{username}")
+    User selectByUsername(String username);
+
 }

@@ -23,8 +23,8 @@ public class MapperTest {
 
     @Test
     public void testSelectAll(){
-        List<Stock> stockList = stockMapper.findAll();
-        System.out.println(stockList);
+        List<String> industys = stockMapper.selectIndustrys();
+        System.out.println(industys);
     }
 
 

@@ -9,4 +9,5 @@ public interface ModelService {
     void insertModel(String stockId);
     void updateCloseStatus( String stockId);
     void updateOpenStatus(String stockId);
+    void updateDate( String stockId,String date);
 }

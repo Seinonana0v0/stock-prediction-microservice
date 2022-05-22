@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
 public class TokenUtils {
-    public static String GET_TOKEN_ROOT_ID(){
+    public static String GET_TOKEN_USER_ID(){
         String token = Objects.requireNonNull(getRequest()).getHeader("token");
         return JWT.decode(token).getAudience().get(0);
     }
